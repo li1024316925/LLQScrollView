@@ -12,6 +12,8 @@
 {
     UITableView *_mianTableView;
     NSTimer *_timer;
+    NSMutableArray *_onceArray;
+    int _index;
 }
 //初始化方法
 - (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array{
@@ -70,6 +72,7 @@
     _mianTableView.rowHeight = _mianTableView.bounds.size.height/_lineNum;
     _mianTableView.delegate = self;
     _mianTableView.dataSource = self;
+    _mianTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self addSubview:_mianTableView];
     
@@ -93,12 +96,23 @@
         NSLog(@"%@",_lineArray);
     }
     
+    _index = 0;
+    
     _timer = [NSTimer scheduledTimerWithTimeInterval:self.scorllTime target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     
 }
 
 //计时器方法
 - (void)timerAction:(NSTimer *)timer{
+    
+    _onceArray = [[NSMutableArray alloc] init];
+    _onceArray = [NSMutableArray arrayWithArray:self.lineArray[_index]];
+    
+    if (_index == self.lineArray.count - 1) {
+        _index = 0;
+    }else{
+        _index ++;
+    }
     
     [_mianTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
     
@@ -120,13 +134,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"llqScorllViewCell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"llqScorllViewCell"];
-        cell.textLabel.text = @"标题";
+        cell.textLabel.text = @"";
         cell.textLabel.font = [UIFont systemFontOfSize:13];
         cell.textLabel.textColor = [UIColor orangeColor];
         cell.detailTextLabel.text = @"副标题";
         cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         cell.detailTextLabel.textColor = [UIColor blackColor];
     }
+
+    NSString *str = [NSString string];
+    if (_onceArray.count > indexPath.row) {
+        str = _onceArray[indexPath.row];
+    }else{
+        str = @"";
+    }
+    
+    cell.textLabel.text = str;
     
     return cell;
 }

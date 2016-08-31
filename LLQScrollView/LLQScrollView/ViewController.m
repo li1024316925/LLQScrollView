@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    LLQScorllView *llqview = [[LLQScorllView alloc] initWithFrame:CGRectMake(20, 100, 300, 50) WithArray:@[@"aaaa",@"bbbb",@"cccc",@"bbbb"]];
+    LLQScorllView *llqview = [[LLQScorllView alloc] initWithFrame:CGRectMake(20, 100, 300, 50) WithArray:@[@"aaaa",@"bbbb",@"cccc",@"dddd"]];
     llqview.scorllTime = 4;
     llqview.lineNum = 3;
     llqview.backgroundColor = [UIColor yellowColor];
