@@ -8,6 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LLQScorllView : UIView
+@interface LLQScorllView : UIView<UITableViewDelegate,UITableViewDataSource>
+
+/**
+ 每次滚动时间，默认1s
+ */
+@property (nonatomic, assign)CGFloat scorllTime;
+
+/**
+ 显示行数，默认为2行
+ */
+@property (nonatomic, assign)NSInteger lineNum;
+
+/**
+ 数据原数组
+ */
+@property (nonatomic, strong)NSArray *dataArray;
+
+/**
+ 初始化方法
+ */
+- (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array;
 
 @end
