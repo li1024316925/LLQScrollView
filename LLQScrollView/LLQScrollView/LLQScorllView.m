@@ -35,12 +35,20 @@
     return self;
 }
 
+//数组懒加载
+- (NSMutableArray *)lineArray{
+    if (_lineArray == nil) {
+        _lineArray = [[NSMutableArray alloc] init];
+    }
+    return _lineArray;
+}
+
 //复写lineNum的set方法
-- (void)setLineNum:(NSInteger)lineNum{
+- (void)setLineNum:(int)lineNum{
     
     _lineNum = lineNum;
     
-    [_mianTableView reloadData];
+    [self addTimer];
     
 }
 
@@ -48,6 +56,7 @@
 - (void)setScorllTime:(CGFloat)scorllTime{
     
     _scorllTime = scorllTime;
+    
     [self addTimer];
     
 }
@@ -67,6 +76,17 @@
 //添加计时器
 - (void)addTimer{
     
+    [_timer invalidate];
+    for (int i = 0; i < _dataArray.count; i = i+_lineNum) {
+        NSArray *array = [NSArray array];
+        if ((_dataArray.count - i)<_lineNum) {
+            array = [_dataArray subarrayWithRange:NSMakeRange(i, (_dataArray.count - i))];
+        }else{
+            array = [_dataArray subarrayWithRange:NSMakeRange(i, _lineNum)];
+        }
+        [self.lineArray addObject:array];
+        NSLog(@"%@",_lineArray);
+    }
     _timer = [NSTimer scheduledTimerWithTimeInterval:self.scorllTime target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     
 }
@@ -95,7 +115,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"llqScorllViewCell"];
         cell.textLabel.text = @"标题";
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.textLabel.textColor = [UIColor orangeColor];
         cell.detailTextLabel.text = @"副标题";
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
     }
     
     return cell;

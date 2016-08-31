@@ -18,12 +18,17 @@
 /**
  显示行数，默认为2行
  */
-@property (nonatomic, assign)NSInteger lineNum;
+@property (nonatomic, assign)int lineNum;
 
 /**
  数据原数组
  */
 @property (nonatomic, strong)NSArray *dataArray;
+
+/**
+ 每次显示的数据数组
+ */
+@property (nonatomic, strong)NSMutableArray *lineArray;
 
 /**
  初始化方法
