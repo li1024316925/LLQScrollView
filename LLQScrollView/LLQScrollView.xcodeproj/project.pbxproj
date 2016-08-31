@@ -16,6 +16,7 @@
 		9FEAF7B91D76642500BB970E /* LLQScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAF7B81D76642500BB970E /* LLQScrollViewTests.m */; };
 		9FEAF7C41D76642500BB970E /* LLQScrollViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAF7C31D76642500BB970E /* LLQScrollViewUITests.m */; };
 		9FEAF7D31D76647F00BB970E /* LLQScorllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAF7D21D76647F00BB970E /* LLQScorllView.m */; };
+		9FEAF7D61D76A4D600BB970E /* LLQScorllViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FEAF7D51D76A4D600BB970E /* LLQScorllViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		9FEAF7C51D76642500BB970E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FEAF7D11D76647F00BB970E /* LLQScorllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQScorllView.h; sourceTree = "<group>"; };
 		9FEAF7D21D76647F00BB970E /* LLQScorllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQScorllView.m; sourceTree = "<group>"; };
+		9FEAF7D41D76A4D600BB970E /* LLQScorllViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQScorllViewCell.h; sourceTree = "<group>"; };
+		9FEAF7D51D76A4D600BB970E /* LLQScorllViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQScorllViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				9FEAF7A51D76642400BB970E /* ViewController.m */,
 				9FEAF7D11D76647F00BB970E /* LLQScorllView.h */,
 				9FEAF7D21D76647F00BB970E /* LLQScorllView.m */,
+				9FEAF7D41D76A4D600BB970E /* LLQScorllViewCell.h */,
+				9FEAF7D51D76A4D600BB970E /* LLQScorllViewCell.m */,
 				9FEAF7A71D76642400BB970E /* Main.storyboard */,
 				9FEAF7AA1D76642400BB970E /* Assets.xcassets */,
 				9FEAF7AC1D76642400BB970E /* LaunchScreen.storyboard */,
@@ -276,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FEAF7A61D76642400BB970E /* ViewController.m in Sources */,
+				9FEAF7D61D76A4D600BB970E /* LLQScorllViewCell.m in Sources */,
 				9FEAF7D31D76647F00BB970E /* LLQScorllView.m in Sources */,
 				9FEAF7A31D76642400BB970E /* AppDelegate.m in Sources */,
 				9FEAF7A01D76642400BB970E /* main.m in Sources */,

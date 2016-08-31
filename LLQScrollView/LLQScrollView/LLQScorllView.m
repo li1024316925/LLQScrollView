@@ -7,6 +7,7 @@
 //
 
 #import "LLQScorllView.h"
+#import "LLQScorllViewCell.h"
 
 @implementation LLQScorllView
 {
@@ -46,17 +47,6 @@
     }
     return _lineArray;
 }
-
-////复写lineNum的set方法
-//- (void)setLineNum:(int)lineNum{
-//    
-//    _lineNum = lineNum;
-//    
-//    [self addTimer];
-//    _mianTableView.rowHeight = _mianTableView.bounds.size.height/_lineNum;
-//    [_mianTableView reloadData];
-//    
-//}
 
 //复写scorllTime的set方法
 - (void)setScorllTime:(CGFloat)scorllTime{
@@ -139,15 +129,10 @@
 //返回单元格
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"llqScorllViewCell"];
+    LLQScorllViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"llqScorllViewCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"llqScorllViewCell"];
-        cell.textLabel.text = @"";
-        cell.textLabel.font = [UIFont systemFontOfSize:13];
-        cell.textLabel.textColor = [UIColor orangeColor];
-        cell.detailTextLabel.text = @"副标题";
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
-        cell.detailTextLabel.textColor = [UIColor blackColor];
+        cell = [[LLQScorllViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"llqScorllViewCell"];
+        cell.titleLabel2.text = @"副标题";
     }
 
     NSString *str = [NSString string];
@@ -157,7 +142,7 @@
         str = @"";
     }
     
-    cell.textLabel.text = str;
+    cell.titleLabel.text = str;
     
     return cell;
 }
