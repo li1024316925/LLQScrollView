@@ -53,7 +53,9 @@
     
     _scorllTime = scorllTime;
     
-    [self addTimer];
+    if (_dataArray.count > 0) {
+        [self addTimer];
+    }
     
 }
 
@@ -73,19 +75,21 @@
 //加载数据
 - (void)loadData{
     
-    for (int i = 0; i < _dataArray.count; i = i+_lineNum) {
-        NSArray *array = [NSArray array];
-        if ((_dataArray.count - i)<_lineNum) {
-            array = [_dataArray subarrayWithRange:NSMakeRange(i, (_dataArray.count - i))];
-        }else{
-            array = [_dataArray subarrayWithRange:NSMakeRange(i, _lineNum)];
+    if (_dataArray.count > 0) {
+        for (int i = 0; i < _dataArray.count; i = i+_lineNum) {
+            NSArray *array = [NSArray array];
+            if ((_dataArray.count - i)<_lineNum) {
+                array = [_dataArray subarrayWithRange:NSMakeRange(i, (_dataArray.count - i))];
+            }else{
+                array = [_dataArray subarrayWithRange:NSMakeRange(i, _lineNum)];
+            }
+            [self.lineArray addObject:array];
+            [self addTimer];
         }
-        [self.lineArray addObject:array];
-        NSLog(@"%@",_lineArray);
+        
+        _onceArray = [[NSMutableArray alloc] init];
+        _onceArray = [NSMutableArray arrayWithArray:self.lineArray[0]];
     }
-    
-    _onceArray = [[NSMutableArray alloc] init];
-    _onceArray = [NSMutableArray arrayWithArray:self.lineArray[0]];
     
 }
 
