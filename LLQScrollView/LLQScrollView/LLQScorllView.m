@@ -67,6 +67,8 @@
     _mianTableView.delegate = self;
     _mianTableView.dataSource = self;
     _mianTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _mianTableView.scrollEnabled = NO;
+    
     
     [self addSubview:_mianTableView];
     
@@ -136,6 +138,7 @@
     LLQScorllViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"llqScorllViewCell"];
     if (cell == nil) {
         cell = [[LLQScorllViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"llqScorllViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.titleLabel2.text = @"副标题";
     }
 
