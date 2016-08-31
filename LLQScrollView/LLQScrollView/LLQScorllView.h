@@ -33,6 +33,6 @@
 /**
  初始化方法
  */
-- (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array;
+- (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array WithlineNum:(int)lineNum;
 
 @end

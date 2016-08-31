@@ -16,12 +16,13 @@
     int _index;
 }
 //初始化方法
-- (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array{
+- (instancetype)initWithFrame:(CGRect)frame WithArray:(NSArray *)array WithlineNum:(int)lineNum{
     
     self = [super initWithFrame:frame];
     if (self) {
         
         self.dataArray = array;
+        self.lineNum = lineNum;
         
         if (self.lineNum == 0) {
             self.lineNum = 2;
@@ -30,6 +31,7 @@
             self.scorllTime = 1.0;
         }
         
+        [self loadData];
         [self createTableView];
         
     }
@@ -45,16 +47,16 @@
     return _lineArray;
 }
 
-//复写lineNum的set方法
-- (void)setLineNum:(int)lineNum{
-    
-    _lineNum = lineNum;
-    
-    [self addTimer];
-    _mianTableView.rowHeight = _mianTableView.bounds.size.height/_lineNum;
-    [_mianTableView reloadData];
-    
-}
+////复写lineNum的set方法
+//- (void)setLineNum:(int)lineNum{
+//    
+//    _lineNum = lineNum;
+//    
+//    [self addTimer];
+//    _mianTableView.rowHeight = _mianTableView.bounds.size.height/_lineNum;
+//    [_mianTableView reloadData];
+//    
+//}
 
 //复写scorllTime的set方法
 - (void)setScorllTime:(CGFloat)scorllTime{
@@ -78,12 +80,8 @@
     
 }
 
-//添加计时器
-- (void)addTimer{
-    
-    [self.lineArray removeAllObjects];
-    
-    [_timer invalidate];
+//加载数据
+- (void)loadData{
     
     for (int i = 0; i < _dataArray.count; i = i+_lineNum) {
         NSArray *array = [NSArray array];
@@ -96,7 +94,17 @@
         NSLog(@"%@",_lineArray);
     }
     
-    _index = 0;
+    _onceArray = [[NSMutableArray alloc] init];
+    _onceArray = [NSMutableArray arrayWithArray:self.lineArray[0]];
+    
+}
+
+//添加计时器
+- (void)addTimer{
+    
+    [_timer invalidate];
+    
+    _index = 1;
     
     _timer = [NSTimer scheduledTimerWithTimeInterval:self.scorllTime target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
     
