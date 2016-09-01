@@ -109,8 +109,12 @@
 //计时器方法
 - (void)timerAction:(NSTimer *)timer{
     
-    _onceArray = [[NSMutableArray alloc] init];
-    _onceArray = [NSMutableArray arrayWithArray:self.lineArray[_index]];
+    if (self.lineArray.count > _index) {
+        _onceArray = [[NSMutableArray alloc] init];
+        _onceArray = [NSMutableArray arrayWithArray:self.lineArray[_index]];
+    }else if (self.lineArray.count == 1){
+        _onceArray = [NSMutableArray arrayWithArray:self.lineArray[0]];
+    }
     
     if (_index == self.lineArray.count - 1) {
         _index = 0;
